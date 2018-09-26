@@ -1,0 +1,28 @@
+{
+  "name": "deltaframe",
+  "version": "0.1.1",
+  "description": "An animation and game loop manager.",
+  "main": "deltaframe.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robertcorponoi/deltaframe"
+  },
+  "keywords": [
+    "game",
+    "loop",
+    "animation",
+    "frame",
+    "delta"
+  ],
+  "author": "Robert Corponoi",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "sinon": "^6.3.4"
+  }
+}

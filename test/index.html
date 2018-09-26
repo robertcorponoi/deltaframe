@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>DeltaFrame Tests</title>
+
+  <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+
+</head>
+
+<body>
+
+  <canvas id="myCanvas" width="400" height="350"></canvas>
+
+  <div id="mocha"></div>
+
+  <script src="../node_modules/sinon/pkg/sinon.js"></script>
+  <script src="../node_modules/chai/chai.js"></script>
+  <script src="../node_modules/mocha/mocha.js"></script>
+
+  <script>mocha.setup('bdd')</script>
+
+  <script type="module" src="./deltaframe.test.js"></script>
+
+  <script type="module">
+
+    mocha.checkLeaks();
+    mocha.run();
+
+  </script>
+
+</body>
+
+</html>
