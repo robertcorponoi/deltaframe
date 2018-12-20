@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="250" height="250" src="./Deltaframe.png">
+  <img width="250" height="250" src="./deltaframe.png">
 </p>
 
 <h1 align="center">DeltaFrame</h1>
@@ -48,6 +48,7 @@ Deltaframe also accepts an options object at initialization with the following o
 | minFps             | number  | The minimum number of frames per second to run deltaframe at. If frames per second drop below this, deltaframe will attempt to restart.  | 5        |
 | targetFps          | number  | The number of frames per second that deltaframe should achieve.                                                                          | 60       |
 | maxRestartAttempts | number  | The number of times deltaframe will attempt to restart before stopping entirely.                                                         | Infinity |
+| runTime            | number  | Specify a value in milliseconds to have Deltaframe automatically stop after the specified amount of time has passed.                     | Infinity |
 | forceSetTimeout    | boolean | Indicates whether setTimeout should be used instead of requestAnimationFrame even if requestAnimation is supported by the user's browser | false    |
 
 So an example of initializating Deltaframe with options is:
