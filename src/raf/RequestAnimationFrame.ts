@@ -9,7 +9,15 @@
  * 
  * @since 0.1.0
  */
-export class RequestAnimationFrame {
+export default class RequestAnimationFrame {
+
+  private id: number;
+
+  private running: boolean;
+
+  private fn: Function;
+
+  private usingSetTimeout: boolean;
 
   constructor() {
 
@@ -20,7 +28,7 @@ export class RequestAnimationFrame {
      * @property {number}
      * @readonly
      */
-    this.id = null;
+    this.id = 0;
 
     /**
      * Keep track of whether the loop is already running or not so we don't accidently
@@ -55,7 +63,7 @@ export class RequestAnimationFrame {
      * @property {RequestAnimationFrame}
      * @readonly
      */
-    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (f) { return setTimeout(f, 1000 / 60) };
+    window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || function (f) { return setTimeout(f, 1000 / 60) };
 
     /**
      * Use the version of cancelAnimationFrame that is supported by the user's browser and if none are
@@ -64,7 +72,7 @@ export class RequestAnimationFrame {
      * @property {cancelAnimationFrame}
      * @readonly
      */
-    window.cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame || window.webkitCancelAnimationFrame || window.msCancelAnimationFrame || function () { clearTimeout(this.id) }
+    window.cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || function (this: RequestAnimationFrame) { clearTimeout(this.id) }
 
   }
 
@@ -76,7 +84,7 @@ export class RequestAnimationFrame {
    * @param {Function} fn The function to run every update of the loop.
    * @param {boolean} forceSetTimeout Indicates whether setTimeout should be used even if the user's browser supports requestAnimationFrame.
    */
-  start(fn, forceSetTimeout) {
+  start(fn: Function, forceSetTimeout: boolean) {
 
     if (this.running) return;
 
@@ -107,7 +115,7 @@ export class RequestAnimationFrame {
    * 
    * @param {number} timestamp The timestamp from the most recent requestAnimationFrame request.
    */
-  updateRAF(timestamp) {
+  updateRAF(timestamp: number) {
 
     this.running = true;
 
@@ -144,7 +152,7 @@ export class RequestAnimationFrame {
 
     else window.cancelAnimationFrame(this.id);
 
-    this.id = null;
+    this.id = 0;
 
     this.running = false;
 
@@ -167,7 +175,7 @@ export class RequestAnimationFrame {
 
     else window.cancelAnimationFrame(this.id);
 
-    this.id = null;
+    this.id = 0;
 
     this.running = false;
 
