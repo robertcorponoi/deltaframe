@@ -1,6 +1,6 @@
 'use strict'
 
-import Deltaframe from '../dist/deltaframe.js';
+import Deltaframe from '../deltaframe.js';
 
 // Used to initialize a new instance of Deltaframe
 // to each time a new test is run.

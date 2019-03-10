@@ -1,3 +1,9 @@
+1.0.1 / 2019-03-10
+==================
+* Added missing `typings` key in `package.json`.
+* Moved the location of the bundled file from `dist/deltaframe.js` to the root directory.
+* Updated all dev dependencies.
+
 1.0.0 / 2018-01-26
 ==================
 
