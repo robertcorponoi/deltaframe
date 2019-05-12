@@ -1,76 +1,75 @@
 'use strict'
 
 /**
- * Abstract the use of requestAnimationFrame and setTimeout under one name so that Deltaframe
- * itself does not have to worry about which one to use.
+ * Abstract the use of requestAnimationFrame and setTimeout under one name so that Deltaframe itself does 
+ * not have to worry about which one to use.
  * 
- * This also uses the requestAnimationFrame and cancelAnimationFrame that are supported by the
- * user's browser and forces setTimeout if desired.
+ * This also uses the requestAnimationFrame and cancelAnimationFrame that are supported by the user's browser 
+ * and forces setTimeout if desired.
  * 
  * @since 0.1.0
  */
 export default class RequestAnimationFrame {
 
-  private id: number;
+  /**
+   * A reference to the id returned by requestAnimationFrame or setTimeout so 
+   * that we can cancel their operation when needed.
+   * 
+   * @since 0.1.0
+   * 
+   * @property {number}
+   */
+  id: number = 0;
 
-  private running: boolean;
+  /**
+   * Keeps track of whether the loop is already running or not so it's not accidently 
+   * restarted.
+   * 
+   * @since 0.1.0
+   * 
+   * @property {boolean}
+   * 
+   * @default false
+   */
+  running: boolean = false;
 
-  private fn: Function;
+  /**
+   * The function that should be run on every update of the loop.
+   * 
+   * @since 0.1.0
+   * 
+   * @property {Function}
+   * 
+   * @default ()=>{}
+   */
+  fn: Function = () => { };
 
-  private usingSetTimeout: boolean;
+  /**
+   * Indicates whether setTImeout is being used instead of requestAnimationFrame.
+   * 
+   * @since 0.1.0
+   * 
+   * @property {boolean}
+   * 
+   * @default false
+   */
+  private usingSetTimeout: boolean = false;
 
   constructor() {
 
     /**
-     * Keep track of the id returned from requestAnimationFrame or setTimeout so we can
-     * use it to cancel them later on.
+     * Use the version of requestAnimationFrame that is supported by the user's browser and if none are 
+     * supported, use setTimeout instead.
      * 
-     * @property {number}
-     * @readonly
-     */
-    this.id = 0;
-
-    /**
-     * Keep track of whether the loop is already running or not so we don't accidently
-     * restart it.
-     * 
-     * @property {boolean}
-     * @readonly
-     */
-    this.running = false;
-
-    /**
-     * The function, as sent from Deltaframe, that will be run every update of the loop.
-     * 
-     * @property {Function}
-     * @readonly
-     */
-    this.fn = () => { };
-
-    /**
-     * Indicates whether setTimeout is being used instead of requestAnimationFrame, either by force or
-     * by user's browser support.
-     * 
-     * @property {boolean}
-     * @readonly
-     */
-    this.usingSetTimeout = false;
-
-    /**
-     * Use the version of requestAnimationFrame that is supported by the user's browser and if none
-     * are supported, use setTimeout instead.
-     * 
-     * @property {RequestAnimationFrame}
-     * @readonly
+     * @property {RequestAnimationFrame|setTimeout}
      */
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || function (f) { return setTimeout(f, 1000 / 60) };
 
     /**
-     * Use the version of cancelAnimationFrame that is supported by the user's browser and if none are
-     * supported, then setTimeout was used and so we use clearTimeout instead.
+     * Use the version of cancelAnimationFrame that is supported by the user's browser and if none are supported, 
+     * then setTimeout was used and so we use clearTimeout instead.
      * 
      * @property {cancelAnimationFrame}
-     * @readonly
      */
     window.cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || function (this: RequestAnimationFrame) { clearTimeout(this.id) }
 

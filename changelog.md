@@ -1,3 +1,8 @@
+1.0.2 / 2019-05-12
+==================
+* Cleaned up unused options from tsconfig
+* Updated all dev dependencies to the latest versions.
+
 1.0.1 / 2019-03-10
 ==================
 * Added missing `typings` key in `package.json`.

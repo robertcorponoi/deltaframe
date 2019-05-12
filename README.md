@@ -18,24 +18,18 @@
 To install this module through npm, simply use the following command:
 
 ```
-$ npm install --save deltaframe
+$ npm install deltaframe
 ```
 
-and to use it, you can import is as an ES6 module:
+and to use it, you can import it as an ES6 module:
 
 ```js
-import { Deltaframe } from './node_modules/deltaframe/deltaframe.js';
-```
-
-or reference the script:
-
-```html
-<script src='./node_modules/deltaframe/deltaframe.min.js'>
+import Deltaframe from './node_modules/deltaframe/deltaframe.js';
 ```
 
 ## **Initialization**
 
-After installing Deltaframe, it can be initialized like below:
+After installing Deltaframe, it can be initialized like so:
 
 ```js
 const deltaframe = new Deltaframe();

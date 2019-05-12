@@ -1,125 +1,103 @@
 'use strict'
 
 /**
- * The Options Object is used to define a set of options that will merge 
- * with the user provided options and fill in default values for options 
- * not specified.
+ * Defines the options available for an instance of Deltaframe along with their default
+ * values if any exist.
  * 
  * @since 1.0.0
  */
 export default class Options {
 
 	/**
-	 * The lowest the game loop's frames per second can drop to 
-	 * before the loop panics.
+	 * The lowest the fps can drop to before the Deltaframe restarts to attempt to fix the
+   * problem.
 	 * 
 	 * @since 1.0.0
 	 * 
 	 * @property {number}
-	 * @readonly
+   * 
+   * @default 15
 	 */
-	private minFps: number;
+  minFps: number = 15;
 
 	/**
-	 * The frames per second that the game loop should aim to 
-	 * achieve.
+	 * The fps that the game loop should aim to  achieve.
 	 * 
 	 * @since 1.0.0
 	 * 
 	 * @property {number}
-	 * @readonly
+   * 
+   * @default 60
 	 */
-	private targetFps: number;
+  targetFps: number = 60;
 
 	/**
-	 * When the game loop goes below the minFps it will restart. 
-	 * This indicates how many times it will restart before stopping 
-	 * permanently.
+	 * When the fps goes below the minFps Deltaframe will restart. This indicates how many times it will 
+   * restart before stopping permanently.
 	 * 
 	 * @since 1.0.0
 	 * 
 	 * @property {number}
-	 * @readonly
+   * 
+   * @default Infinity
 	 */
-	public maxRestartAttempts: number;
+  maxRestartAttempts: number = Infinity;
 
 	/**
-	 * Specify the amount of milliseconds that Deltaframe should run 
-	 * for.
+	 * Specify the amount of milliseconds that Deltaframe should run for.
 	 * 
 	 * @since 1.0.0
 	 * 
 	 * @property {number}
-	 * @readonly
+   * 
+   * @default Infinity
 	 */
-	public runTime: number;
+  runTime: number = Infinity;
 
 	/**
-	 * Indicates whether setTimeout should be used even if requestAnimationFrame
-	 * is supported by the user's browser.
+	 * Indicates whether setTimeout should be used even if requestAnimationFrame is supported by the user's browser.
 	 * 
 	 * @since 1.0.0
 	 * 
 	 * @property {number}
-	 * @readonly
+   * 
+   * @default false
 	 */
-	public forceSetTimeout: boolean;
+  forceSetTimeout: boolean = false;
 
 	/**
-   * @param {Object} [options]
-   * @param {number} [options.minFps=15] The lowest the game loop's frames per second can drop to before the loop panics.
-   * @param {number} [options.targetFps=60] The frames per second that the game loop should aim to achieve.
-   * @param {number} [options.maxRestartAttempts=Infinity] When the game loop goes below the minFps it will restart. This indicates how many times it will restart before stopping permanently.
-	 * @param {number} [options.runTime=Infinity] Specify the amount of milliseconds that Deltaframe should run for.
-   * @param {boolean} [options.forceSetTimeout=false] Indicates whether setTimeout should be used even if requestAnimationFrame is supported by the user's browser.
+   * @param {Object} options The initialization options passed to Deltaframe.
    */
-	constructor(options: Object) {
+  constructor(options: Object) {
 
-		this.minFps = 15;
+    Object.assign(this, options);
 
-		this.targetFps = 60;
-
-		this.maxRestartAttempts = Infinity;
-
-		this.runTime = Infinity;
-
-		this.forceSetTimeout = false;
-
-		/**
-		 * Replace the default values with the user specified values, if they exist.
-		 * 
-		 * @since 1.0.0
-		 */
-		Object.assign(this, this, options);
-
-	}
+  }
 
 	/**
-	 * Return the minFps as a decimal representing the amount of
-	 * time before a frame should occur.
+	 * Return the minFps as a decimal representing the amount of time before a frame should occur.
 	 * 
 	 * @since 1.0.0
 	 * 
 	 * @returns {number}
 	 */
-	public get minFpsCalc(): number {
+  get minFpsCalc(): number {
 
-		return Math.floor(1000 / this.minFps);
+    return Math.floor(1000 / this.minFps);
 
-	}
+  }
 
 	/**
-	 * Return the targetFps as a decimal representing the amount of
-	 * time before a frame should occur.
+	 * Return the targetFps as a decimal representing the amount of time before a frame should occur.
 	 * 
 	 * @since 1.0.0
 	 * 
 	 * @returns {number}
 	 */
-	public get targetFpsCalc(): number {
+  get targetFpsCalc(): number {
 
-		return Math.floor(1000 / this.targetFps);
+    return Math.floor(1000 / this.targetFps);
 
-	}
+  }
 
 }
