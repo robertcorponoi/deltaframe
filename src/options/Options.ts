@@ -68,7 +68,7 @@ export default class Options {
 	/**
    * @param {Object} options The initialization options passed to Deltaframe.
    */
-  constructor(options: Object) {
+  constructor(options: Object = {}) {
 
     Object.assign(this, options);
 

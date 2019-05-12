@@ -1,6 +1,6 @@
 {
   "name": "deltaframe",
-  "version": "1.0.3",
+  "version": "1.0.31",
   "description": "An animation and game loop manager.",
   "module": "deltaframe.js",
   "scripts": {
@@ -26,7 +26,7 @@
     "frame",
     "delta"
   ],
-  "typings": "lib/deltaframe.d.ts",
+  "typings": "lib/index.d.ts",
   "author": "Robert Corponoi",
   "license": "MIT",
   "devDependencies": {

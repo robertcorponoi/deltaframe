@@ -60,7 +60,7 @@ export default class Options {
     /**
    * @param {Object} options The initialization options passed to Deltaframe.
    */
-    constructor(options: Object);
+    constructor(options?: Object);
     /**
      * Return the minFps as a decimal representing the amount of time before a frame should occur.
      *

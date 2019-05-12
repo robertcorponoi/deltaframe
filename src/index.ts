@@ -164,7 +164,7 @@ export default class Deltaframe {
    * @param {number} [options.runTime=Infinity] The length of time that this instance of Deltaframe will run. This can be used to create an animation that lasts a specific amount of time.
    * @param {boolean} [options.forceSetTimeout=false] If set to true, Deltaframe will use setTimeout for the loop instead of requestAnimationFrame.
    */
-  constructor(options: Object = {}) {
+  constructor(options?: Object) {
 
     this._options = new Options(options);
 
