@@ -470,7 +470,9 @@ function () {
    * @param {number} [options.runTime=Infinity] The length of time that this instance of Deltaframe will run. This can be used to create an animation that lasts a specific amount of time.
    * @param {boolean} [options.forceSetTimeout=false] If set to true, Deltaframe will use setTimeout for the loop instead of requestAnimationFrame.
    */
-  function Deltaframe(options) {
+  function Deltaframe() {
+    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
     _classCallCheck(this, Deltaframe);
 
     _defineProperty(this, "_options", void 0);
