@@ -1,6 +1,6 @@
 {
   "name": "deltaframe",
-  "version": "1.0.31",
+  "version": "1.0.4",
   "description": "An animation and game loop manager.",
   "module": "deltaframe.js",
   "scripts": {
@@ -30,19 +30,19 @@
   "author": "Robert Corponoi",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
     "@babel/preset-typescript": "^7.3.3",
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
-    "rollup": "^1.11.3",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^9.3.4",
-    "rollup-plugin-node-resolve": "^4.2.4",
+    "rollup": "^1.17.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "sinon": "^7.3.2",
-    "typescript": "^3.4.5"
+    "typescript": "^3.5.3"
   }
 }

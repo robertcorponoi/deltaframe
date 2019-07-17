@@ -1,3 +1,7 @@
+1.0.4 / 2019-07-17
+==================
+* [HOTFIX] Updated all dev dependencies to their latest versions and fixed any security vulnerabilities found in them.
+
 1.0.3 / 2019-05-12
 ==================
 * Made the initialization options optional.
