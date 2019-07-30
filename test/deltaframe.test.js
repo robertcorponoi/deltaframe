@@ -2,39 +2,18 @@
 
 import Deltaframe from './deltaframe.js';
 
-// Used to initialize a new instance of Deltaframe
-// to each time a new test is run.
 let deltaframe;
 
-// Used to create and restore sinon fake timers.
 let clock;
-
-// Used to create sinon spies to let us know when functions
-// are being called.
 let spy;
 
-// Time and deltaAverage are populated by the animation's draw
-// function which itself gets these values from Deltaframe.
 let animTime;
 let animDeltaAverage;
 
-// During some tests this keeps track of how many times the
-// the animation function has been called.
 let timesCalled;
 
-/**
- * Test creating a new instance of Deltaframe using various options.
- * 
- * @since 1.0.0
- */
 describe('Creating a new instance', () => {
 
-  /**
-   * Make sure that if the user does not specify any initialization
-   * options that all of the defaults will be used.
-   * 
-   * @since 1.0.0
-   */
   it('should initialize Deltaframe with all default values', () => {
 
     deltaframe = new Deltaframe();
@@ -51,12 +30,6 @@ describe('Creating a new instance', () => {
 
   });
 
-  /**
-   * Make sure that the minFps options gets successfully converted
-   * to a decimal value.
-   * 
-   * @since 1.0.0
-   */
   it('should return the decimal equivalent of 25 fps', () => {
 
     const options = { minFps: 25 };
@@ -67,12 +40,6 @@ describe('Creating a new instance', () => {
 
   });
 
-  /**
-   * Make sure that the targetFps option gets successfully converted
-   * to a decimal value.
-   * 
-   * @since 1.0.0
-   */
   it('should return the decimal equivalent of 45 fps', () => {
 
     const options = { targetFps: 45 };
@@ -85,14 +52,6 @@ describe('Creating a new instance', () => {
 
 });
 
-/**
- * Test running an animation.
- * 
- * Before each test we setup a sinon fake timer and after each test
- * we restore it so it's ready for the next test.
- * 
- * @since 0.1.0
- */
 describe('Running an animation', () => {
 
   beforeEach(() => {
@@ -107,12 +66,7 @@ describe('Running an animation', () => {
 
   });
 
-  /**
-   * Make sure that the animation is called on a frame by frame
-   * basis.
-   * 
-   * @since 0.1.0
-   */
+
   it('should call the animation function continuously', () => {
 
     deltaframe = new Deltaframe();
@@ -127,12 +81,6 @@ describe('Running an animation', () => {
 
   });
 
-  /**
-   * Make sure that after 10 seconds has passed, the `time` value
-   * passed to the animating function is correct.
-   * 
-   * @since 0.1.0
-   */
   it('should run for ten seconds and _time should be equal to 10000', () => {
 
     deltaframe = new Deltaframe();
@@ -145,12 +93,6 @@ describe('Running an animation', () => {
 
   });
 
-  /**
-   * Make sure that the average time between frames is between a
-   * reasonable amount of 15 to 18 milliseconds.
-   * 
-   * @since 0.1.0
-   */
   it('should have delta averages between 15 and 18 milliseconds', () => {
 
     deltaframe = new Deltaframe();
@@ -163,12 +105,6 @@ describe('Running an animation', () => {
 
   });
 
-  /**
-   * Make sure that if the animation is only set to run for a certain
-   * amount of time, it only runs for that period of time.
-   * 
-   * @since 1.0.0
-   */
   it('should only run the animation for the specified amount of time', () => {
 
     const options = { runTime: 5000 };
@@ -185,14 +121,6 @@ describe('Running an animation', () => {
 
 });
 
-/**
- * Test pausing an animation.
- * 
- * Before each test we setup a sinon fake timer and setup a new instance
- * of Deltaframe and after each test we reset both.
- * 
- * @since 0.1.0
- */
 describe('Pausing an animation', () => {
 
   beforeEach(() => {
@@ -215,12 +143,6 @@ describe('Pausing an animation', () => {
 
   });
 
-  /**
-   * Make sure that when the animation is paused the correct properties
-   * are updated and returned.
-   * 
-   * @since 0.1.0
-   */
   it('should not run the draw function anymore when paused', () => {
 
     deltaframe.start(draw);
@@ -235,12 +157,6 @@ describe('Pausing an animation', () => {
 
   });
 
-  /**
-   * Make sure that when the animation is paused, the draw function is
-   * not called during that time.
-   * 
-   * @since 0.1.0
-   */
   it('should not update the time property while paused', () => {
 
     deltaframe.start(draw);
@@ -257,14 +173,6 @@ describe('Pausing an animation', () => {
 
 });
 
-/**
- * Test resuming an animation.
- * 
- * Before each test we setup a sinon fake timer and setup a new instance
- * of Deltaframe and after each test we reset both.
- * 
- * @since 0.1.0
- */
 describe('Resuming an animation', () => {
 
   beforeEach(() => {
@@ -287,12 +195,6 @@ describe('Resuming an animation', () => {
 
   });
 
-  /**
-   * Make sure that after the animation is resumed from a paused state, the
-   * correct properties update.
-   * 
-   * @since 0.1.0
-   */
   it('should continue running the draw function after being resuming Deltaframe', () => {
 
     deltaframe.start(draw);
@@ -309,12 +211,6 @@ describe('Resuming an animation', () => {
 
   });
 
-  /**
-   * Make sure that the after the animation is resumed from a paused state, it
-   * continues running.
-   * 
-   * @since 0.1.0
-   */
   it('should continue updating the time after being resumed', () => {
 
     deltaframe.start(draw);
@@ -333,14 +229,6 @@ describe('Resuming an animation', () => {
 
 });
 
-/**
- * Test stopping an animation.
- * 
- * Before each test we setup a sinon fake timer and setup a new instance
- * of Deltaframe and after each test we reset both.
- * 
- * @since 0.1.0
- */
 describe('Stopping an animation', () => {
 
   beforeEach(() => {
@@ -363,12 +251,6 @@ describe('Stopping an animation', () => {
 
   });
 
-  /**
-   * Make sure that when an animation is stopped that all properties of
-   * Deltaframe are reset to their original values.
-   * 
-   * @since 0.1.0
-   */
   it('should reset all properties when Deltaframe is stopped', () => {
 
     let testFn = function () {};
@@ -420,25 +302,12 @@ describe('Stopping an animation', () => {
  * 
  * ====================================================================
  */
-
-// Used to reference the canvas in the HTML test document.
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
-// Used to specify the position of the ball which allows for
-// animation of the ball's movement.
 let x = canvas.width / 2;
 let y = canvas.height - 30;
 
-/**
- * Updates the canvas animation.
- * 
- * The time, delta, and deltaAverage parameters are passed in from 
- * Deltaframe and the function populates our global versions defined
- * at the top of the file.
- * 
- * @since 0.1.0
- */
 function draw(time, delta, deltaAverage) {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);

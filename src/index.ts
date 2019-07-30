@@ -341,7 +341,11 @@ export default class Deltaframe {
    */
   private _boot() {
 
-    document.addEventListener('visibilitychange', () => this._visibilityChange);
+    document.addEventListener("visibilitychange", () => {
+      
+      this._visibilityChange();
+
+    });
 
   }
 
@@ -421,11 +425,11 @@ export default class Deltaframe {
    */
   private _visibilityChange() {
 
-    let visibility = document.visibilityState;
+    const visibility = document.visibilityState;
 
-    if (visibility === 'visible') this.resume();
+    if (this.isPaused && visibility === 'visible') this.resume();
 
-    else if (visibility === 'hidden') this.pause();
+    else if (this.isRunning && visibility === 'hidden') this.pause();
 
   }
 
