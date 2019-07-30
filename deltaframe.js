@@ -621,8 +621,8 @@ function () {
     value: function _boot() {
       var _this3 = this;
 
-      document.addEventListener('visibilitychange', function () {
-        return _this3._visibilityChange;
+      document.addEventListener("visibilitychange", function () {
+        _this3._visibilityChange();
       });
     }
     /**
@@ -690,7 +690,7 @@ function () {
     key: "_visibilityChange",
     value: function _visibilityChange() {
       var visibility = document.visibilityState;
-      if (visibility === 'visible') this.resume();else if (visibility === 'hidden') this.pause();
+      if (this.isPaused && visibility === 'visible') this.resume();else if (this.isRunning && visibility === 'hidden') this.pause();
     }
   }, {
     key: "timesRestarted",
