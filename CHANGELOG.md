@@ -1,3 +1,7 @@
+1.1.1 / 2019-11-03
+==================
+* [FEATURE] Updated all dependencies to their latest versions.
+
 1.1.0 / 2019-07-29
 ==================
 * [FEATURE] Added the visibility change functionality fully so that the timer pauses and resumes depending on whether or not the page is in focus.
