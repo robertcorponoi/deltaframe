@@ -1,3 +1,8 @@
+1.1.2 / 2019-11-03
+==================
+* [FEATURE] Removed testing dependencies and replaced them with unpkg scripts.
+* [MISC] Added more badges to README.
+
 1.1.1 / 2019-11-03
 ==================
 * [FEATURE] Updated all dependencies to their latest versions.

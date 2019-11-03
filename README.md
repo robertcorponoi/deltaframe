@@ -7,10 +7,14 @@
 <p align="center">DeltaFrame is a lightweight animation and game loop manager. <p>
 
 <div align="center">
-  <a href="https://badge.fury.io/js/deltaframe"><img src="https://badge.fury.io/js/deltaframe.svg" alt="npm version" height="18"></a>
-  <a href="https://badge.fury.io/js/deltaframe"><img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="build" height="18"></a>
+
+  [![NPM version](https://img.shields.io/npm/v/deltaframe.svg?style=flat)](https://www.npmjs.com/package/deltaframe)
+  [![Known Vulnerabilities](https://snyk.io/test/github/robertcorponoi/deltaframe/badge.svg)](https://snyk.io/test/github/robertcorponoi/deltaframe)
+  [![NPM downloads](https://img.shields.io/npm/dm/deltaframe.svg?style=flat)](https://www.npmjs.com/package/deltaframe)
   <a href="https://badge.fury.io/js/deltaframe"><img src="https://img.shields.io/github/issues/robertcorponoi/deltaframe.svg" alt="issues" height="18"></a>
   <a href="https://badge.fury.io/js/deltaframe"><img src="https://img.shields.io/github/license/robertcorponoi/deltaframe.svg" alt="license" height="18"></a>
+  [![Gitter](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/robertcorponoi)
+
 </div>
 
 ## **Installation**
@@ -24,6 +28,10 @@ $ npm install deltaframe
 and to use it, you can import it as an ES6 module:
 
 ```js
+// Webpack
+import Deltaframe from 'deltaframe';
+
+// Browser
 import Deltaframe from './node_modules/deltaframe/deltaframe.js';
 ```
 
