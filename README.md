@@ -10,6 +10,7 @@
 
   [![NPM version](https://img.shields.io/npm/v/deltaframe.svg?style=flat)](https://www.npmjs.com/package/deltaframe)
   [![Known Vulnerabilities](https://snyk.io/test/github/robertcorponoi/deltaframe/badge.svg)](https://snyk.io/test/github/robertcorponoi/deltaframe)
+  ![npm](https://img.shields.io/npm/dt/deltaframe)
   [![NPM downloads](https://img.shields.io/npm/dm/deltaframe.svg?style=flat)](https://www.npmjs.com/package/deltaframe)
   <a href="https://badge.fury.io/js/deltaframe"><img src="https://img.shields.io/github/issues/robertcorponoi/deltaframe.svg" alt="issues" height="18"></a>
   <a href="https://badge.fury.io/js/deltaframe"><img src="https://img.shields.io/github/license/robertcorponoi/deltaframe.svg" alt="license" height="18"></a>
