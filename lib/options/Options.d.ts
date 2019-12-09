@@ -68,7 +68,7 @@ export default class Options {
      *
      * @returns {number}
      */
-    readonly minFpsCalc: number;
+    get minFpsCalc(): number;
     /**
      * Return the targetFps as a decimal representing the amount of time before a frame should occur.
      *
@@ -76,5 +76,5 @@ export default class Options {
      *
      * @returns {number}
      */
-    readonly targetFpsCalc: number;
+    get targetFpsCalc(): number;
 }

@@ -1,3 +1,7 @@
+1.1.4 / 2019-12-08
+==================
+* [MISC] Updated dev dependencies to their latest versions.
+
 1.1.3 / 2019-11-03
 ==================
 * [FEATURE] Removed testing dependencies and replaced them with unpkg scripts.

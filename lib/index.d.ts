@@ -152,7 +152,7 @@ export default class Deltaframe {
      *
      * @returns {number}
      */
-    readonly timesRestarted: number;
+    get timesRestarted(): number;
     /**
      * Returns if Deltaframe is running or not.
      *
@@ -160,7 +160,7 @@ export default class Deltaframe {
      *
      * @returns {boolean}
      */
-    readonly isRunning: boolean;
+    get isRunning(): boolean;
     /**
      * Returns if Deltaframe is paused or not.
      *
@@ -168,7 +168,7 @@ export default class Deltaframe {
      *
      * @returns {boolean}
      */
-    readonly isPaused: boolean;
+    get isPaused(): boolean;
     /**
      * Returns the current frame.
      *
@@ -176,7 +176,7 @@ export default class Deltaframe {
      *
      * @returns {number}
      */
-    readonly frame: number;
+    get frame(): number;
     /**
      * Start the loop.
      *
