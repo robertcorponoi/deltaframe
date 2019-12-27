@@ -1,4 +1,4 @@
-1.1.5 / 2019-12-26
+1.1.6 / 2019-12-26
 ==================
 * [MISC] Updated dev dependencies to their latest versions.
 * [MISC] Added testing section in README.
