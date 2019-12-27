@@ -1,3 +1,9 @@
+1.1.5 / 2019-12-26
+==================
+* [MISC] Updated dev dependencies to their latest versions.
+* [MISC] Added testing section in README.
+* [MISC] Cleaned up spacinig in code blocks in README.
+
 1.1.4 / 2019-12-08
 ==================
 * [MISC] Updated dev dependencies to their latest versions.
@@ -43,7 +49,6 @@
 
 1.0.0 / 2018-01-26
 ==================
-
 * Added Typescript definitions with Babel transpiling.
 * Added rollup as the module bundler which exports to `src/deltaframe.js`.
 * Changed the initialization options into their own Object for greater flexibility.
@@ -52,7 +57,6 @@
 
 0.2.0 / 2018-12-20
 ==================
-
 * Added getters for various properties:
 	- `timesRestarted`: Returns the number of times Deltaframe has had to restart due to the average fps dipping below the minimum fps.
 	- `isRunning`: Returns `true` if the animation loop is currently running.
@@ -66,5 +70,4 @@
 
 0.1.0 / 2018-08-26
 ==================
-
 * Initial Release

@@ -83,17 +83,14 @@ let x = canvas.width / 2;
 let y = canvas.height - 30;
 
 function drawCircle() {
-
   ctx.beginPath();
   ctx.arc(x, y - 30, 10, 0, Math.PI * 2);
   ctx.fillStyle = '#0095DD';
   ctx.fill();
   ctx.closePath();
-
 }
 
 function draw(time) {
-
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   drawCircle();
@@ -102,7 +99,6 @@ function draw(time) {
   y += -2;
 
   requestAnimationFrame(draw);
-
 }
 
 requestAnimationFrame(draw);
@@ -121,24 +117,20 @@ let x = canvas.width / 2;
 let y = canvas.height - 30;
 
 function drawCircle() {
-
   ctx.beginPath();
   ctx.arc(x, y - 30, 10, 0, Math.PI * 2);
   ctx.fillStyle = '#0095DD';
   ctx.fill();
   ctx.closePath();
-
 }
 
 function draw(time, delta, deltaAverage) {
-
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   drawCircle();
 
   x += 2;
   y += -2;
-
 }
 
 deltaframe.start(draw);
@@ -162,24 +154,20 @@ let x = canvas.width / 2;
 let y = canvas.height - 30;
 
 function drawCircle() {
-
   ctx.beginPath();
   ctx.arc(x, y - 30, 10, 0, Math.PI * 2);
   ctx.fillStyle = '#0095DD';
   ctx.fill();
   ctx.closePath();
-
 }
 
 function draw(time, delta, deltaAverage) {
-
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   drawCircle();
 
   x += 2;
   y += -2;
-
 }
 
 deltaframe.start(draw);
@@ -196,10 +184,8 @@ Note that deltaframe automatically pauses when the user switches tabs.
 deltaframe.start(draw);
 
 setTimeout(() => {
-
   // After one second the drawing loop will pause and the game will look 'frozen'.
   deltaframe.pause();
-
 }, 1000);
 ```
 
@@ -215,17 +201,13 @@ Note that deltaframe automatically resumes from being paused when the user switc
 deltaframe.start(draw);
 
 setTimeout(() => {
-
   // After one second the drawing loop will pause and the game will look 'frozen'.
   deltaframe.pause();
 
   setTimeout(() => {
-
     // After two seconds resume the drawing loop like it was never even paused.
     deltaframe.resume();
-
   }, 2000);
-
 }, 1000);
 ```
 
@@ -242,11 +224,19 @@ deltaframe.start(draw);
 
 // If some imaginary condition is met, stop deltaframe from running any more.
 if (someConditionThatEndsTheAnimation) {
-
   deltaframe.stop();
-
 }
 ```
+
+## **Tests**
+
+The tests for Deltaframe are browser based so to run them you will first need to start the local testing server like so:
+
+```bash
+$ npm run test
+```
+
+then you will need to navigate to https://localhost/test/index.html in your browser to run all of the available tests for Deltaframe.
 
 ## **License**
 
