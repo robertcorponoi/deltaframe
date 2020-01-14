@@ -1,3 +1,9 @@
+1.1.7 / 2020-01-14
+==================
+* [MISC] Updated dev dependencies to their latest versions.
+* [MISC] Updated license year to reflect new year.
+* [MISC] Moved logo to graphics repo and updated reference in the README.
+
 1.1.6 / 2019-12-26
 ==================
 * [MISC] Updated dev dependencies to their latest versions.

@@ -1,10 +1,10 @@
 <p align="center">
-  <img width="250" height="250" src="./deltaframe.png">
+  <img width="250" height="250" src="https://github.com/robertcorponoi/graphics/blob/master/deltaframe/deltaframe-logo.png?raw=true">
 </p>
 
 <h1 align="center">DeltaFrame</h1>
 
-<p align="center">DeltaFrame is a lightweight animation and game loop manager. <p>
+<p align="center">DeltaFrame is a lightweight animation and game loop manager.<p>
 
 <div align="center">
 
