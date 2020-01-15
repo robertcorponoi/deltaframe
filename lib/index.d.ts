@@ -1,36 +1,27 @@
 /**
- * Deltaframe is an animation and game loop manager that makes sure your application
- * is punctual and performant.
- *
- * @author Robert Corponoi <robertcorponoi@gmail.com>
- *
- * @version 1.0.2
+ * Deltaframe is an animation and game loop manager that makes sure your application is punctual and performant.
  */
 export default class Deltaframe {
     /**
      * A reference to the options for this instance of Deltaframe.
      *
-     * @since 0.1.0
      * @private
      *
      * @property {Options}
      */
     private _options;
     /**
-     * The amount of times Deltaframe has had to restart due to the average fps
-     * dipping below the minimum fps for a series of frames.
+     * The amount of times Deltaframe has had to restart due to the average fps dipping below the minimum fps for a
+     * series of frames.
      *
-     * @since 0.1.0
      * @private
      *
      * @property {number}
      */
     private _restartAttempts;
     /**
-     * Indicates whether Deltaframe is currently is currently running and not paused
-     * or stopped.
+     * Indicates whether Deltaframe is currently is currently running and not pausedor stopped.
      *
-     * @since 0.1.0
      * @private
      *
      * @property {boolean}
@@ -39,7 +30,6 @@ export default class Deltaframe {
     /**
      * Indicates whether Deltaframe is currently paused.
      *
-     * @since 0.1.0
      * @private
      *
      * @property {boolean}
@@ -48,7 +38,6 @@ export default class Deltaframe {
     /**
      * The function that will be called on every Deltaframe update.
      *
-     * @since 0.1.0
      * @private
      *
      * @property {Function}
@@ -57,7 +46,6 @@ export default class Deltaframe {
     /**
      * The current frame that Deltaframe is on.
      *
-     * @since 0.1.0
      * @private
      *
      * @property {number}
@@ -66,7 +54,6 @@ export default class Deltaframe {
     /**
      * The current timestamp as of the latest call to RequestAnimationFrame.
      *
-     * @since 0.1.0
      * @private
      *
      * @property {DOMHighResTimeStamp|number}
@@ -75,7 +62,6 @@ export default class Deltaframe {
     /**
      * The timestamp before the current timestamp.
      *
-     * @since 0.1.0
      * @private
      *
      * @property {DOMHighResTimeStamp|number}
@@ -84,7 +70,6 @@ export default class Deltaframe {
     /**
      * The difference in time between the current time and the last time.
      *
-     * @since 0.1.0
      * @private
      *
      * @property {number}
@@ -93,7 +78,6 @@ export default class Deltaframe {
     /**
      * The average difference in time between frames.
      *
-     * @since 0.1.0
      * @private
      *
      * @property {number}
@@ -102,17 +86,14 @@ export default class Deltaframe {
     /**
      * A set of up to 10 recent previous delta values that are used to get the mean delta.
      *
-     * @since 0.1.0
      * @private
      *
      * @property {Array<number>}
      */
     private _deltaHistory;
     /**
-     * Since we only want to go up to 10 on the deltaHistory, we keep track of what index we're
-     * on so we can reset to 0 once were at 10.
+     * Since we only want to go up to 10 on the deltaHistory, we keep track of what index we're  on so we can reset to 0 once were at 10.
      *
-     * @since 0.1.0
      * @private
      *
      * @property {number}
@@ -121,7 +102,6 @@ export default class Deltaframe {
     /**
      * Initialize the RequestAnimationFrame abstraction module.
      *
-     * @since 0.1.0
      * @private
      *
      * @property {RequestAnimationFrame}
@@ -130,7 +110,6 @@ export default class Deltaframe {
     /**
      * Use the version of hidden that's supported by the user's browser.
      *
-     * @since 1.0.0
      * @private
      *
      * @property {document.hidden}
@@ -148,15 +127,11 @@ export default class Deltaframe {
     /**
      * Return the number of times that Deltafram has restarted.
      *
-     * @since 1.0.0
-     *
      * @returns {number}
      */
     get timesRestarted(): number;
     /**
      * Returns if Deltaframe is running or not.
-     *
-     * @since 1.0.0
      *
      * @returns {boolean}
      */
@@ -164,68 +139,59 @@ export default class Deltaframe {
     /**
      * Returns if Deltaframe is paused or not.
      *
-     * @since 0.1.0
-     *
      * @returns {boolean}
      */
     get isPaused(): boolean;
     /**
      * Returns the current frame.
      *
-     * @since 1.0.0
-     *
      * @returns {number}
      */
     get frame(): number;
     /**
-     * Start the loop.
+     * Returns the current time.
      *
-     * @since 0.1.0
+     * @returns {DOMHighResTimeStamp|number}
+     */
+    get time(): (DOMHighResTimeStamp | number);
+    /**
+     * Start the loop.
      *
      * @param {Function} fn The function to be called every step by the loop.
      */
     start(fn: Function): void;
     /**
      * Pause the loop operation saving the state to be resumed at a later time.
-     *
-     * @since 0.1.0
      */
     pause(): void;
     /**
      * Resume the loop from a paused state.
-     *
-     * @since 0.1.0
      */
     resume(): void;
     /**
      * Stop the loop and reset all time values of Deltaframe.
-     *
-     * @since 0.1.0
      */
     stop(): void;
     /**
-     * Initialize the page visibility events which will let us save resources by pausing
-     * our updates when the user is not interacting with the page running Deltaframe.
+     * Initialize the page visibility events which will let us save resources by pausing our updates when the user is not
+     * interacting with the page running Deltaframe.
      *
-     * @since 0.1.0
      * @private
      */
     private _boot;
     /**
-     * Update is called whenever requestAnimationFrame decides it can process the next step of the loop
-     * or roughly 60 times per second using setTimeout.
+     * Update is called whenever requestAnimationFrame decides it can process the next step of the loop  or roughly 60
+     * times per second using setTimeout.
      *
-     * @since 0.1.0
      * @private
      *
      * @param {DOMHighResTimeStamp|number} timestamp The timestamp as returned from requestAnimationFrame.
      */
     private _update;
     /**
-     * When the the user has switched to a different tab and is not on the same page that
-     * Deltaframe is running on, Deltaframe will pause and when the user comes back it will resume.
+     * When the the user has switched to a different tab and is not on the same page that Deltaframe is running on, Deltaframe
+     * will pause and when the user comes back it will resume.
      *
-     * @since 0.2.0
      * @private
      */
     private _visibilityChange;

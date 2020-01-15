@@ -39,10 +39,7 @@ var Options =
 /*#__PURE__*/
 function () {
   /**
-   * The lowest the fps can drop to before the Deltaframe restarts to attempt to fix the
-    * problem.
-   * 
-   * @since 1.0.0
+   * The lowest the fps can drop to before the Deltaframe restarts to attempt to fix the problem.
    * 
    * @property {number}
     * 
@@ -52,18 +49,13 @@ function () {
   /**
    * The fps that the game loop should aim to  achieve.
    * 
-   * @since 1.0.0
-   * 
    * @property {number}
     * 
     * @default 60
    */
 
   /**
-   * When the fps goes below the minFps Deltaframe will restart. This indicates how many times it will 
-    * restart before stopping permanently.
-   * 
-   * @since 1.0.0
+   * When the fps goes below the minFps Deltaframe will restart. This indicates how many times it will  restart before stopping permanently.
    * 
    * @property {number}
     * 
@@ -73,8 +65,6 @@ function () {
   /**
    * Specify the amount of milliseconds that Deltaframe should run for.
    * 
-   * @since 1.0.0
-   * 
    * @property {number}
     * 
     * @default Infinity
@@ -82,8 +72,6 @@ function () {
 
   /**
    * Indicates whether setTimeout should be used even if requestAnimationFrame is supported by the user's browser.
-   * 
-   * @since 1.0.0
    * 
    * @property {number}
     * 
@@ -113,8 +101,6 @@ function () {
   /**
    * Return the minFps as a decimal representing the amount of time before a frame should occur.
    * 
-   * @since 1.0.0
-   * 
    * @returns {number}
    */
 
@@ -126,8 +112,6 @@ function () {
     }
     /**
      * Return the targetFps as a decimal representing the amount of time before a frame should occur.
-     * 
-     * @since 1.0.0
      * 
      * @returns {number}
      */
@@ -146,19 +130,13 @@ var RequestAnimationFrame =
 /*#__PURE__*/
 function () {
   /**
-   * A reference to the id returned by requestAnimationFrame or setTimeout so 
-   * that we can cancel their operation when needed.
-   * 
-   * @since 0.1.0
+   * A reference to the id returned by requestAnimationFrame or setTimeout so  that we can cancel their operation when needed.
    * 
    * @property {number}
    */
 
   /**
-   * Keeps track of whether the loop is already running or not so it's not accidently 
-   * restarted.
-   * 
-   * @since 0.1.0
+   * Keeps track of whether the loop is already running or not so it's not accidently restarted.
    * 
    * @property {boolean}
    * 
@@ -168,8 +146,6 @@ function () {
   /**
    * The function that should be run on every update of the loop.
    * 
-   * @since 0.1.0
-   * 
    * @property {Function}
    * 
    * @default ()=>{}
@@ -177,8 +153,6 @@ function () {
 
   /**
    * Indicates whether setTImeout is being used instead of requestAnimationFrame.
-   * 
-   * @since 0.1.0
    * 
    * @property {boolean}
    * 
@@ -196,8 +170,7 @@ function () {
     _defineProperty(this, "usingSetTimeout", false);
 
     /**
-     * Use the version of requestAnimationFrame that is supported by the user's browser and if none are 
-     * supported, use setTimeout instead.
+     * Use the version of requestAnimationFrame that is supported by the user's browser and if none are  supported, use setTimeout instead.
      * 
      * @property {RequestAnimationFrame|setTimeout}
      */
@@ -205,8 +178,8 @@ function () {
       return setTimeout(f, 1000 / 60);
     };
     /**
-     * Use the version of cancelAnimationFrame that is supported by the user's browser and if none are supported, 
-     * then setTimeout was used and so we use clearTimeout instead.
+     * Use the version of cancelAnimationFrame that is supported by the user's browser and if none are supported,  then setTimeout was used 
+     * and so we use clearTimeout instead.
      * 
      * @property {cancelAnimationFrame}
      */
@@ -218,8 +191,6 @@ function () {
   }
   /**
    * Start the operation of the requestAnimationFrame or setTimeout loop.
-   * 
-   * @since 0.1.0
    * 
    * @param {Function} fn The function to run every update of the loop.
    * @param {boolean} forceSetTimeout Indicates whether setTimeout should be used even if the user's browser supports requestAnimationFrame.
@@ -245,10 +216,7 @@ function () {
       }
     }
     /**
-     * Call requestAnimationFrame recursively so that the loop keeps going and
-     * also send the timestamps over to Deltaframe.
-     * 
-     * @since 0.1.0
+     * Call requestAnimationFrame recursively so that the loop keeps going and also send the timestamps over to Deltaframe.
      * 
      * @param {number} timestamp The timestamp from the most recent requestAnimationFrame request.
      */
@@ -265,10 +233,7 @@ function () {
       });
     }
     /**
-     * Call setTimeout recursively so that the loop keeps going and also send
-     * the timestamps over to Deltaframe.
-     * 
-     * @since 0.1.0
+     * Call setTimeout recursively so that the loop keeps going and also send the timestamps over to Deltaframe.
      */
 
   }, {
@@ -284,8 +249,6 @@ function () {
     }
     /**
      * Restart the requestAnimation or setTimeout loop.
-     * 
-     * @since 0.1.0
      */
 
   }, {
@@ -303,8 +266,6 @@ function () {
     }
     /**
      * Stop the loop by calling cancelAnimationFrame or clearTimeout.
-     * 
-     * @since 0.1.0
      */
 
   }, {
@@ -324,12 +285,7 @@ function () {
 }();
 
 /**
- * Deltaframe is an animation and game loop manager that makes sure your application
- * is punctual and performant.
- * 
- * @author Robert Corponoi <robertcorponoi@gmail.com>
- * 
- * @version 1.0.2
+ * Deltaframe is an animation and game loop manager that makes sure your application is punctual and performant.
  */
 
 var Deltaframe =
@@ -338,27 +294,23 @@ function () {
   /**
    * A reference to the options for this instance of Deltaframe.
    * 
-   * @since 0.1.0
    * @private
    * 
    * @property {Options}
    */
 
   /**
-   * The amount of times Deltaframe has had to restart due to the average fps
-   * dipping below the minimum fps for a series of frames.
+   * The amount of times Deltaframe has had to restart due to the average fps dipping below the minimum fps for a 
+   * series of frames.
    * 
-   * @since 0.1.0
    * @private
    * 
    * @property {number}
    */
 
   /**
-   * Indicates whether Deltaframe is currently is currently running and not paused
-   * or stopped.
+   * Indicates whether Deltaframe is currently is currently running and not pausedor stopped.
    * 
-   * @since 0.1.0
    * @private
    * 
    * @property {boolean}
@@ -367,7 +319,6 @@ function () {
   /**
    * Indicates whether Deltaframe is currently paused.
    * 
-   * @since 0.1.0
    * @private
    * 
    * @property {boolean}
@@ -376,7 +327,6 @@ function () {
   /**
    * The function that will be called on every Deltaframe update.
    * 
-   * @since 0.1.0
    * @private
    * 
    * @property {Function}
@@ -385,7 +335,6 @@ function () {
   /**
    * The current frame that Deltaframe is on.
    * 
-   * @since 0.1.0
    * @private
    * 
    * @property {number}
@@ -394,7 +343,6 @@ function () {
   /**
    * The current timestamp as of the latest call to RequestAnimationFrame.
    * 
-   * @since 0.1.0
    * @private
    * 
    * @property {DOMHighResTimeStamp|number}
@@ -403,7 +351,6 @@ function () {
   /**
    * The timestamp before the current timestamp.
    * 
-   * @since 0.1.0
    * @private
    * 
    * @property {DOMHighResTimeStamp|number}
@@ -412,7 +359,6 @@ function () {
   /**
    * The difference in time between the current time and the last time.
    * 
-   * @since 0.1.0
    * @private
    * 
    * @property {number}
@@ -421,7 +367,6 @@ function () {
   /**
    * The average difference in time between frames.
    * 
-   * @since 0.1.0
    * @private
    * 
    * @property {number}
@@ -430,17 +375,14 @@ function () {
   /**
    * A set of up to 10 recent previous delta values that are used to get the mean delta.
    * 
-   * @since 0.1.0
    * @private
    * 
    * @property {Array<number>}
    */
 
   /**
-   * Since we only want to go up to 10 on the deltaHistory, we keep track of what index we're 
-   * on so we can reset to 0 once were at 10.
+   * Since we only want to go up to 10 on the deltaHistory, we keep track of what index we're  on so we can reset to 0 once were at 10.
    * 
-   * @since 0.1.0
    * @private
    * 
    * @property {number}
@@ -449,7 +391,6 @@ function () {
   /**
    * Initialize the RequestAnimationFrame abstraction module.
    * 
-   * @since 0.1.0
    * @private
    * 
    * @property {RequestAnimationFrame}
@@ -458,7 +399,6 @@ function () {
   /**
    * Use the version of hidden that's supported by the user's browser.
    * 
-   * @since 1.0.0
    * @private
    * 
    * @property {document.hidden}
@@ -525,8 +465,6 @@ function () {
   /**
    * Return the number of times that Deltafram has restarted.
    * 
-   * @since 1.0.0
-   * 
    * @returns {number}
    */
 
@@ -536,8 +474,6 @@ function () {
 
     /**
      * Start the loop.
-     * 
-     * @since 0.1.0
      * 
      * @param {Function} fn The function to be called every step by the loop.
      */
@@ -554,8 +490,6 @@ function () {
     }
     /**
      * Pause the loop operation saving the state to be resumed at a later time.
-     * 
-     * @since 0.1.0
      */
 
   }, {
@@ -566,8 +500,6 @@ function () {
     }
     /**
      * Resume the loop from a paused state.
-     * 
-     * @since 0.1.0
      */
 
   }, {
@@ -579,8 +511,6 @@ function () {
     }
     /**
      * Stop the loop and reset all time values of Deltaframe.
-     * 
-     * @since 0.1.0
      */
 
   }, {
@@ -609,10 +539,9 @@ function () {
       return;
     }
     /**
-     * Initialize the page visibility events which will let us save resources by pausing
-     * our updates when the user is not interacting with the page running Deltaframe.
+     * Initialize the page visibility events which will let us save resources by pausing our updates when the user is not 
+     * interacting with the page running Deltaframe.
      * 
-     * @since 0.1.0
      * @private
      */
 
@@ -622,14 +551,13 @@ function () {
       var _this3 = this;
 
       document.addEventListener("visibilitychange", function () {
-        _this3._visibilityChange();
+        return _this3._visibilityChange();
       });
     }
     /**
-     * Update is called whenever requestAnimationFrame decides it can process the next step of the loop 
-     * or roughly 60 times per second using setTimeout.
+     * Update is called whenever requestAnimationFrame decides it can process the next step of the loop  or roughly 60 
+     * times per second using setTimeout.
      * 
-     * @since 0.1.0
      * @private
      * 
      * @param {DOMHighResTimeStamp|number} timestamp The timestamp as returned from requestAnimationFrame.
@@ -679,10 +607,9 @@ function () {
       }
     }
     /**
-     * When the the user has switched to a different tab and is not on the same page that
-     * Deltaframe is running on, Deltaframe will pause and when the user comes back it will resume.
+     * When the the user has switched to a different tab and is not on the same page that Deltaframe is running on, Deltaframe 
+     * will pause and when the user comes back it will resume.
      * 
-     * @since 0.2.0
      * @private
      */
 
@@ -700,8 +627,6 @@ function () {
     /**
      * Returns if Deltaframe is running or not.
      * 
-     * @since 1.0.0
-     * 
      * @returns {boolean}
      */
 
@@ -712,8 +637,6 @@ function () {
     }
     /**
      * Returns if Deltaframe is paused or not.
-     * 
-     * @since 0.1.0
      * 
      * @returns {boolean}
      */
@@ -726,8 +649,6 @@ function () {
     /**
      * Returns the current frame.
      * 
-     * @since 1.0.0
-     * 
      * @returns {number}
      */
 
@@ -735,6 +656,17 @@ function () {
     key: "frame",
     get: function get() {
       return this._frame;
+    }
+    /**
+     * Returns the current time.
+     * 
+     * @returns {DOMHighResTimeStamp|number}
+     */
+
+  }, {
+    key: "time",
+    get: function get() {
+      return this._time;
     }
   }]);
 

@@ -1,3 +1,9 @@
+1.2.0 / 2020-01-14
+==================
+* [FEATURE] Added `time` as a getter.
+* [MISC] Removed unnecessary jsdoc comments.
+* [MISC] Removed `public` from methods as its redundant.
+
 1.1.7 / 2020-01-14
 ==================
 * [MISC] Updated dev dependencies to their latest versions.
