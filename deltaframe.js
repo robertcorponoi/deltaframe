@@ -126,6 +126,204 @@ function () {
   return Options;
 }();
 
+var TaskOptions =
+/**
+ * Specifies the time in between runs.
+ * 
+ * @property {number}
+ * 
+ * @default 1000
+ */
+
+/**
+ * A delay before running the task for the first time.
+ * 
+ * @property {number}
+ * 
+ * @default 0
+ */
+
+/**
+ * Specify this to have the task be destroyed after being run the specified amount of times.
+ * 
+ * @property {number}
+ * 
+ * @default Infinity
+ */
+
+/**
+ * @param {Object} options The options passed when creating a new task.
+ */
+function TaskOptions(options) {
+  _classCallCheck(this, TaskOptions);
+
+  _defineProperty(this, "interval", 1000);
+
+  _defineProperty(this, "delay", 0);
+
+  _defineProperty(this, "timesToRun", Infinity);
+
+  Object.assign(this, options);
+};
+
+/**
+ * Defines a task that can be created and added to the task manager.
+ */
+
+var Task =
+/*#__PURE__*/
+function () {
+  /**
+   * The name of this task.
+   * 
+   * @property {string}
+   */
+
+  /**
+   * A reference to the function to call when this task is run.
+   * 
+   * @property {Function}
+   */
+
+  /**
+   * A reference to the options for this task.
+   * 
+   * @property {TaskOptions}
+   */
+
+  /**
+   * The number of times that this task has been run.
+   * 
+   * @property {number}
+   */
+
+  /**
+   * The time this task was last run at.
+   * 
+   * @property {number}
+   */
+
+  /**
+   * @param {string} name The name of this task.
+   * @param {Function} fn The function to call when this task is run.
+   * @param {Object} options The options for this task.
+   */
+  function Task(name, fn, options) {
+    _classCallCheck(this, Task);
+
+    _defineProperty(this, "name", void 0);
+
+    _defineProperty(this, "fn", void 0);
+
+    _defineProperty(this, "options", void 0);
+
+    _defineProperty(this, "timesRun", 0);
+
+    _defineProperty(this, "lastRunAt", 0);
+
+    this.name = name;
+    this.fn = fn;
+    this.options = new TaskOptions(options);
+  }
+  /**
+   * Runs the function associated with this task.
+   */
+
+
+  _createClass(Task, [{
+    key: "run",
+    value: function run() {
+      this.fn();
+      this.timesRun++;
+    }
+  }]);
+
+  return Task;
+}();
+
+/**
+ * The task manager is used to add and manage tasks that are supposed to run at specific times, on repeat, or a 
+ * predetermined number of times.
+ */
+
+var TaskManager =
+/*#__PURE__*/
+function () {
+  function TaskManager() {
+    _classCallCheck(this, TaskManager);
+
+    _defineProperty(this, "_active", []);
+  }
+
+  _createClass(TaskManager, [{
+    key: "addTask",
+
+    /**
+     * Adds a task to the task manager.
+     * 
+     * @param {string} name The name of the task to add.
+     * @param {string} fn The function to call when this task is run.
+     * @param {Object} [options]
+     * @param {number} [options.interval=1000] Specifies the time in between runs.
+     * @param {number} [options.delay=0] A delay before running the task for the first time.
+     * @param {number} [options.timesToRun=Infinity] Specify this to have the task be destroyed after being run the specified amount of times.
+     */
+    value: function addTask(name, fn) {
+      var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+      var task = new Task(name, fn, options);
+
+      this._active.push(task);
+    }
+    /**
+     * Removes a task by its name.
+     * 
+     * @param {string} name The name of the task to remove.
+     */
+
+  }, {
+    key: "removeTask",
+    value: function removeTask(name) {
+      this._active = this._active.filter(function (task) {
+        return task.name !== name;
+      });
+    }
+    /**
+     * Checks to see if any tasks need to be run and runs them if so.
+     * 
+     * This will also remove tasks if they are no longer needed.
+     * 
+     * @param {number} time The current timestamp.
+     */
+
+  }, {
+    key: "update",
+    value: function update(time) {
+      var _this = this;
+
+      this.active.map(function (task) {
+        if (time > task.options.delay && time - task.lastRunAt >= task.options.interval) {
+          task.run();
+          task.lastRunAt = time;
+          if (task.timesRun > task.options.timesToRun) _this.removeTask(task.name);
+        }
+      });
+    }
+  }, {
+    key: "active",
+
+    /**
+     * Returns all of the active tasks.
+     * 
+     * @returns {Array<Tas>}
+     */
+    get: function get() {
+      return this._active;
+    }
+  }]);
+
+  return TaskManager;
+}();
+
 var RequestAnimationFrame =
 /*#__PURE__*/
 function () {
@@ -405,6 +603,14 @@ function () {
    */
 
   /**
+   * A reference to the task manager.
+   * 
+   * @private
+   * 
+   * @property {TaskManager}
+   */
+
+  /**
    * @param {Object} [options] The options to pass to this Deltaframe instance.
    * @param {number} [options.minFps=15] The minimum fps value allowed before Deltaframe will restart to try to correct the issue.
    * @param {number} [options.targetFps=60] The fps that Deltaframe should aim to achieve.
@@ -442,6 +648,8 @@ function () {
     _defineProperty(this, "_raf", void 0);
 
     _defineProperty(this, "_hidden", void 0);
+
+    _defineProperty(this, "_tasks", new TaskManager());
 
     this._options = new Options(options);
     this._restartAttempts = 0;
@@ -603,6 +811,7 @@ function () {
 
         this._fn(timestamp, this._delta, this._deltaAverage);
 
+        if (this._tasks.active.length > 0) this._tasks.update(this.time);
         this._prevTime = timestamp;
       }
     }
@@ -667,6 +876,17 @@ function () {
     key: "time",
     get: function get() {
       return this._time;
+    }
+    /**
+     * Returns a reference to the task manager.
+     * 
+     * @returns {TaskManager}
+     */
+
+  }, {
+    key: "tasks",
+    get: function get() {
+      return this._tasks;
     }
   }]);
 

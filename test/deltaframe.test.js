@@ -12,19 +12,21 @@ let animDeltaAverage;
 
 let timesCalled;
 
+mocha.setup({ globals: ['__VUE_DEVTOOLS_TOAST__'] })
+
 describe('Creating a new instance', () => {
   it('should initialize Deltaframe with all default values', () => {
     deltaframe = new Deltaframe();
 
     chai.expect(deltaframe._options.minFps).to.equal(15)
 
-      && chai.expect(deltaframe._options.targetFps).to.equal(60)
+    chai.expect(deltaframe._options.targetFps).to.equal(60)
 
-      && chai.expect(deltaframe._options.maxRestartAttempts).to.equal(Infinity)
+    chai.expect(deltaframe._options.maxRestartAttempts).to.equal(Infinity)
 
-      && chai.expect(deltaframe._options.runTime).to.equal(Infinity)
+    chai.expect(deltaframe._options.runTime).to.equal(Infinity)
 
-      && chai.expect(deltaframe._options.forceSetTimeout).to.equal(false);
+    chai.expect(deltaframe._options.forceSetTimeout).to.equal(false);
   });
 
   it('should return the decimal equivalent of 25 fps', () => {
@@ -234,6 +236,54 @@ describe('Stopping an animation', () => {
       chai.expect(deltaframe.isRunning).to.be.false &&
 
       chai.expect(deltaframe.isPaused).to.be.false;
+  });
+});
+
+describe('Running tasks', () => {
+  beforeEach(() => clock = sinon.useFakeTimers());
+
+  afterEach(() => clock.restore());
+
+  it('should run a task every 2 seconds', () => {
+    deltaframe = new Deltaframe();
+
+    const task = () => { return 'hello world!'; }
+
+    deltaframe.tasks.addTask('test', task, { interval: 1000 });
+
+    deltaframe.start(draw);
+
+    clock.tick(7000);
+
+    chai.expect(deltaframe.tasks.active[0].timesRun).to.equal(6);
+  });
+
+  it('should run a task with a 1500 delay at the beginning', () => {
+    deltaframe = new Deltaframe();
+
+    const task = () => { return 'hello world!'; }
+
+    deltaframe.tasks.addTask('test', task, { interval: 1000, delay: 2500 });
+
+    deltaframe.start(draw);
+
+    clock.tick(5000);
+
+    chai.expect(deltaframe.tasks.active[0].timesRun).to.equal(3);
+  });
+
+  it('should run a task 2 times then destroy it', () => {
+    deltaframe = new Deltaframe();
+
+    const task = () => { return 'hello world!'; }
+
+    deltaframe.tasks.addTask('test', task, { interval: 1000, timesToRun: 2 });
+
+    deltaframe.start(draw);
+
+    clock.tick(4000);
+
+    chai.expect(deltaframe.tasks.active.length).to.equal(0);
   });
 });
 

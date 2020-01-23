@@ -228,6 +228,52 @@ if (someConditionThatEndsTheAnimation) {
 }
 ```
 
+## **Tasks**
+
+Tasks are functions that can be assigned to run one or more times on an interval.
+
+**Note:** Tasks are not guaranteed to run at the exact time you wish them to. For example, if you have a task that runs every second, you cannot expect it to run at 1000ms, 2000ms, 3000ms on the dot because the timing is decided by requestAnimationFrame. The task will run at the closest possible time to the expected time.
+
+### **addTask**
+
+| param              | type     | description                                                                               | default  |
+|--------------------|----------|-------------------------------------------------------------------------------------------|----------|
+| name               | string   | The name of the task to add.                                                              |          |
+| fn                 | Function | The function to call when this task is run.                                               |          |
+| options            | Object   |                                                                                           |          |
+| options.interval   | number   | Specifies the time in between runs of this task.                                          | 1000     |
+| options.delay      | number   | An initial delay before running this task for the first time.                             | 0        |
+| options.timesToRun | number   | Specify this to have the task be destroyed after being run the specified amount of times. | Infinity |
+
+**example:**
+
+```js
+const task = () => { return 'hello world!'; }
+
+// Running a task every 1 second:
+deltaframe.tasks.addTask('test', task, { interval: 1000 });
+
+// Running a task every 1 second but waiting 2.5 seconds before the first run.
+deltaframe.tasks.addTask('test', task, { interval: 1000, delay: 2500 });
+
+// Running a task every 1 second but only twice after which it gets removed automatically.
+deltaframe.tasks.addTask('test', task, { interval: 1000, timesToRun: 2 });
+```
+
+### **removeTask**
+
+| param              | type     | description                                                                               | default  |
+|--------------------|----------|-------------------------------------------------------------------------------------------|----------|
+| name               | string   | The name of the task to remove.                                                           |          |
+
+```js
+const task = () => { return 'hello world!'; }
+
+deltaframe.tasks.addTask('test', task, { interval: 1000 });
+
+deltaframe.tasks.removeTask('test');
+```
+
 ## **Tests**
 
 The tests for Deltaframe are browser based so to run them you will first need to start the local testing server like so:

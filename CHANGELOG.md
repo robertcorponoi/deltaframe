@@ -1,3 +1,9 @@
+1.3.0 / 2020-01-23
+==================
+* [FEATURE] Added ability to add tasks that can run one or more times on an interval with an optional delay.
+* [DOCS] Added documentation about tasks.
+* [TEST] Added global to mocha setup to prevent an irrelevant error from displaying.
+
 1.2.0 / 2020-01-14
 ==================
 * [FEATURE] Added `time` as a getter.

@@ -1,6 +1,7 @@
 'use strict'
 
 import Options from './options/Options';
+import TaskManager from './tasks/TaskManager';
 import RequestAnimationFrame from './raf/RequestAnimationFrame';
 
 /**
@@ -136,6 +137,15 @@ export default class Deltaframe {
   private _hidden: Object;
 
   /**
+   * A reference to the task manager.
+   * 
+   * @private
+   * 
+   * @property {TaskManager}
+   */
+  private _tasks: TaskManager = new TaskManager();
+
+  /**
    * @param {Object} [options] The options to pass to this Deltaframe instance.
    * @param {number} [options.minFps=15] The minimum fps value allowed before Deltaframe will restart to try to correct the issue.
    * @param {number} [options.targetFps=60] The fps that Deltaframe should aim to achieve.
@@ -209,6 +219,13 @@ export default class Deltaframe {
    * @returns {DOMHighResTimeStamp|number}
    */
   get time(): (DOMHighResTimeStamp | number) { return this._time; }
+
+  /**
+   * Returns a reference to the task manager.
+   * 
+   * @returns {TaskManager}
+   */
+  get tasks(): TaskManager { return this._tasks; }
 
   /**
    * Start the loop.
@@ -337,6 +354,8 @@ export default class Deltaframe {
       this._frame++;
 
       this._fn(timestamp, this._delta, this._deltaAverage);
+
+      if (this._tasks.active.length > 0) this._tasks.update(this.time);
 
       this._prevTime = timestamp;
     }

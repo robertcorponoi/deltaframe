@@ -1,3 +1,4 @@
+import TaskManager from './tasks/TaskManager';
 /**
  * Deltaframe is an animation and game loop manager that makes sure your application is punctual and performant.
  */
@@ -116,6 +117,14 @@ export default class Deltaframe {
      */
     private _hidden;
     /**
+     * A reference to the task manager.
+     *
+     * @private
+     *
+     * @property {TaskManager}
+     */
+    private _tasks;
+    /**
      * @param {Object} [options] The options to pass to this Deltaframe instance.
      * @param {number} [options.minFps=15] The minimum fps value allowed before Deltaframe will restart to try to correct the issue.
      * @param {number} [options.targetFps=60] The fps that Deltaframe should aim to achieve.
@@ -154,6 +163,12 @@ export default class Deltaframe {
      * @returns {DOMHighResTimeStamp|number}
      */
     get time(): (DOMHighResTimeStamp | number);
+    /**
+     * Returns a reference to the task manager.
+     *
+     * @returns {TaskManager}
+     */
+    get tasks(): TaskManager;
     /**
      * Start the loop.
      *
