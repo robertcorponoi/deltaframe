@@ -239,54 +239,6 @@ describe('Stopping an animation', () => {
   });
 });
 
-describe('Running tasks', () => {
-  beforeEach(() => clock = sinon.useFakeTimers());
-
-  afterEach(() => clock.restore());
-
-  it('should run a task every 2 seconds', () => {
-    deltaframe = new Deltaframe();
-
-    const task = () => { return 'hello world!'; }
-
-    deltaframe.tasks.addTask('test', task, { interval: 1000 });
-
-    deltaframe.start(draw);
-
-    clock.tick(7000);
-
-    chai.expect(deltaframe.tasks.active[0].timesRun).to.equal(6);
-  });
-
-  it('should run a task with a 1500 delay at the beginning', () => {
-    deltaframe = new Deltaframe();
-
-    const task = () => { return 'hello world!'; }
-
-    deltaframe.tasks.addTask('test', task, { interval: 1000, delay: 2500 });
-
-    deltaframe.start(draw);
-
-    clock.tick(5000);
-
-    chai.expect(deltaframe.tasks.active[0].timesRun).to.equal(3);
-  });
-
-  it('should run a task 2 times then destroy it', () => {
-    deltaframe = new Deltaframe();
-
-    const task = () => { return 'hello world!'; }
-
-    deltaframe.tasks.addTask('test', task, { interval: 1000, timesToRun: 2 });
-
-    deltaframe.start(draw);
-
-    clock.tick(4000);
-
-    chai.expect(deltaframe.tasks.active.length).to.equal(0);
-  });
-});
-
 /**
  * ====================================================================
  * 
