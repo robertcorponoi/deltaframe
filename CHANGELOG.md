@@ -1,7 +1,9 @@
-## 2.0.0 / 2020-02-17
+## 2.0.1 / 2020-02-18
+- [DOCS] Updated documentation to reflect new changes.
+
+## 2.0.0 / 2020-02-18
 - [FEATURE] Separated extra 'bulky' features to deltaframe-extra. This package will be dedicated to just being a lightweight game loop runner while deltaframe-extra will consist of other feature such as tasks.
 - [FEATURE] Removed tasks from this and moved them to deltaframe-extra.
-- [DOCS] Updated README to match changes.
 - [MISC] Updated dependencies to their latest versions.
 - [MISC] Removed mocha and chai dependencies as they're referenced by script tags in the test index.html.
 - [MISC] Changed CHANGELOG format.
