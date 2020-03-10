@@ -35,9 +35,7 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-var Options =
-/*#__PURE__*/
-function () {
+var Options = /*#__PURE__*/function () {
   /**
    * The lowest the fps can drop to before the Deltaframe restarts to attempt to fix the problem.
    * 
@@ -126,9 +124,7 @@ function () {
   return Options;
 }();
 
-var RequestAnimationFrame =
-/*#__PURE__*/
-function () {
+var RequestAnimationFrame = /*#__PURE__*/function () {
   /**
    * A reference to the id returned by requestAnimationFrame or setTimeout so  that we can cancel their operation when needed.
    * 
@@ -288,9 +284,7 @@ function () {
  * Deltaframe is an animation and game loop manager that makes sure your application is punctual and performant.
  */
 
-var Deltaframe =
-/*#__PURE__*/
-function () {
+var Deltaframe = /*#__PURE__*/function () {
   /**
    * A reference to the options for this instance of Deltaframe.
    * 
