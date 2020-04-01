@@ -1,6 +1,6 @@
 {
   "name": "deltaframe",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "An animation and game loop manager.",
   "module": "deltaframe.js",
   "scripts": {
@@ -31,16 +31,16 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.7",
+    "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
-    "@babel/preset-env": "^7.8.7",
-    "@babel/preset-typescript": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
-    "rollup": "^2.0.2",
+    "rollup": "^2.3.2",
     "rollup-plugin-babel": "^4.4.0",
-    "sinon": "^9.0.0",
+    "sinon": "^9.0.1",
     "typescript": "^3.8.3"
   },
   "dependencies": {}

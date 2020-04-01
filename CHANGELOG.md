@@ -1,3 +1,6 @@
+## 2.0.3 / 2020-03-31
+- [MISC] Updated out-of-date dependencies to their latest versions.
+
 ## 2.0.2 / 2020-03-09
 - [MISC] Changed from using rollup-plugin-commonjs and rollup-plugin-node-resolve to using @rollup/plugin-commonjs and @rollup/plugin-node-resolve.
 - [MISC] Updated dependencies with security vulnerabilities.
