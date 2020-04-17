@@ -1,3 +1,6 @@
+## 2.0.4 / 2020-04-17
+- [MISC] Updated out-of-date dependencies to their latest versions which also fixed all possible fixed security vulnerabilities.
+
 ## 2.0.3 / 2020-03-31
 - [MISC] Updated out-of-date dependencies to their latest versions.
 
