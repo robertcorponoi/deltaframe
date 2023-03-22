@@ -223,7 +223,7 @@ const ctx = canvas.getContext("2d");
 let x = canvas.width / 2;
 let y = canvas.height - 30;
 
-const draw = (time: number, delta: number, deltaAverage: number) => {
+const draw = (delta: number, deltaAverage: number, time: number) => {
     if (!ctx) return;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
