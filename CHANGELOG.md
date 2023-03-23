@@ -4,6 +4,8 @@
 -   Changed Options from a class to a type.
 -   Updated various types.
 -   Added ESLint and Prettier.
+-   Added GitHub workflow for creating the bundle and running the tests on PRs.
+-   Added dependabot config.
 -   Updated tests to use jest which so they no longer have to run in a browser.
 -   Updated out-of-date dependencies to their latest versions.
 
