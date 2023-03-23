@@ -1,32 +1,11 @@
-'use strict'
-
-import pkg from './package.json';
-import babel from 'rollup-plugin-babel';
-import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
-
-const extensions = ['.js', '.jsx', '.ts', '.tsx'];
+import commonjs from "@rollup/plugin-commonjs";
+import typescript from "@rollup/plugin-typescript";
 
 export default {
-
-	input: './src/index.ts',
-
-	plugins: [
-
-		resolve({ extensions }),
-
-		commonjs(),
-
-		babel({ extensions, include: ['src/**/*'] }),
-
-	],
-
-	output: [{
-		file: pkg.module,
-		format: 'esm',
-	}, {
-    file: 'test/' + pkg.module,
-    format: 'esm'
-  }]
-
+    input: "./src/index.ts",
+    plugins: [commonjs(), typescript()],
+    output: {
+        dir: "dist",
+        format: "esm",
+    },
 };
