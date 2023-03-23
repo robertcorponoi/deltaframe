@@ -238,7 +238,7 @@ export default class Deltaframe {
         if (this.deltaAverage >= this.targetFpsCalc) {
             this.frame++;
 
-            this.fn(timestamp, this.delta, this.deltaAverage);
+            this.fn(this.delta, this.deltaAverage, timestamp);
 
             this.prevTime = timestamp;
         }
