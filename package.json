@@ -19,8 +19,8 @@
         "LICENSE"
     ],
     "scripts": {
-        "bundle": "rollup -c",
-        "bundle:watch": "rollup -c --watch",
+        "build": "rollup -c",
+        "build:watch": "rollup -c --watch",
         "test": "jest"
     },
     "repository": {
