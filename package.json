@@ -21,6 +21,8 @@
     "scripts": {
         "build": "rollup -c",
         "build:watch": "rollup -c --watch",
+        "prepare": "if [ ! -d 'dist' ]; then npm run build; fi",
+        "pretest": "npm run build",
         "test": "jest"
     },
     "repository": {
