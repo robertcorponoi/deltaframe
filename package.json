@@ -1,6 +1,8 @@
 {
     "name": "deltaframe",
     "version": "3.0.0",
+    "author": "Robert Corponoi",
+    "license": "MIT",
     "description": "An animation and game loop manager.",
     "type": "module",
     "exports": {
@@ -11,6 +13,11 @@
             }
         }
     },
+    "files": [
+        "/dist",
+        "README.md",
+        "LICENSE"
+    ],
     "scripts": {
         "bundle": "rollup -c",
         "bundle:watch": "rollup -c --watch",
@@ -25,8 +32,6 @@
         "game loop",
         "animation"
     ],
-    "author": "Robert Corponoi",
-    "license": "MIT",
     "devDependencies": {
         "@rollup/plugin-commonjs": "^24.0.1",
         "@rollup/plugin-node-resolve": "^15.0.1",
